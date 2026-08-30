@@ -1,0 +1,40 @@
+Usando dispositivo: cpu
+Epoca 001/30 | loss_D: 1.3191 | loss_G: 1.5709
+Epoca 002/30 | loss_D: 0.7472 | loss_G: 2.0156
+Epoca 003/30 | loss_D: 1.1405 | loss_G: 2.4631
+Epoca 004/30 | loss_D: 0.9655 | loss_G: 2.1477
+Epoca 005/30 | loss_D: 0.8777 | loss_G: 2.1741
+  -> amostras salvas em /home/raf75/projetos_pessoais/Gans/output/samples_epoch_005.png
+Epoca 006/30 | loss_D: 0.8338 | loss_G: 1.8721
+Epoca 007/30 | loss_D: 0.7122 | loss_G: 2.0936
+Epoca 008/30 | loss_D: 0.9071 | loss_G: 3.3352
+Epoca 009/30 | loss_D: 0.9704 | loss_G: 0.9975
+Epoca 010/30 | loss_D: 0.8359 | loss_G: 2.1631
+  -> amostras salvas em /home/raf75/projetos_pessoais/Gans/output/samples_epoch_010.png
+Epoca 011/30 | loss_D: 0.8560 | loss_G: 2.3418
+Epoca 012/30 | loss_D: 0.8404 | loss_G: 1.7148
+Epoca 013/30 | loss_D: 0.8781 | loss_G: 1.1103
+Epoca 014/30 | loss_D: 1.0803 | loss_G: 1.9612
+Epoca 015/30 | loss_D: 1.1651 | loss_G: 1.1160
+  -> amostras salvas em /home/raf75/projetos_pessoais/Gans/output/samples_epoch_015.png
+Epoca 016/30 | loss_D: 1.0737 | loss_G: 1.5589
+Epoca 017/30 | loss_D: 1.0503 | loss_G: 0.9636
+Epoca 018/30 | loss_D: 1.1289 | loss_G: 1.6654
+Epoca 019/30 | loss_D: 1.2236 | loss_G: 0.7684
+Epoca 020/30 | loss_D: 1.1448 | loss_G: 1.8315
+  -> amostras salvas em /home/raf75/projetos_pessoais/Gans/output/samples_epoch_020.png
+Epoca 021/30 | loss_D: 1.1383 | loss_G: 1.5819
+Epoca 022/30 | loss_D: 1.0847 | loss_G: 1.4944
+Epoca 023/30 | loss_D: 1.0513 | loss_G: 1.3374
+Epoca 024/30 | loss_D: 1.0916 | loss_G: 1.0276
+Epoca 025/30 | loss_D: 1.1801 | loss_G: 1.5854
+  -> amostras salvas em /home/raf75/projetos_pessoais/Gans/output/samples_epoch_025.png
+Epoca 026/30 | loss_D: 1.1298 | loss_G: 1.2640
+Epoca 027/30 | loss_D: 1.1087 | loss_G: 1.1505
+Epoca 028/30 | loss_D: 1.0767 | loss_G: 1.4131
+Epoca 029/30 | loss_D: 1.0831 | loss_G: 1.2131
+Epoca 030/30 | loss_D: 1.2487 | loss_G: 0.6770
+  -> amostras salvas em /home/raf75/projetos_pessoais/Gans/output/samples_epoch_030.png
+  -> curva de loss salva em /home/raf75/projetos_pessoais/Gans/output/loss_curve.png
+
+Concluido. Resultados salvos em: /home/raf75/projetos_pessoais/Gans/output

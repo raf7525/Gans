@@ -1,0 +1,4 @@
+output/data/
+output/generator.pt
+__pycache__/
+*.pyc
