@@ -30,7 +30,7 @@ from torch.utils.data import DataLoader
 from torchvision import datasets, transforms
 from torchvision.utils import make_grid, save_image
 
-LATENT_DIM = 100
+LATENT_DIM = 100 # ESPACO LATENTE
 IMG_SIZE = 28 * 28
 OUTPUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "output")
 
@@ -94,7 +94,7 @@ def train(epochs, batch_size, lr, sample_every):
     generator = Generator().to(device)
     discriminator = Discriminator().to(device)
 
-    criterion = nn.BCELoss()
+    criterion = nn.BCELoss()#FUNCAO DE PERDA
     opt_g = torch.optim.Adam(generator.parameters(), lr=lr, betas=(0.5, 0.999))
     opt_d = torch.optim.Adam(discriminator.parameters(), lr=lr, betas=(0.5, 0.999))
 
@@ -110,8 +110,7 @@ def train(epochs, batch_size, lr, sample_every):
             real_labels = torch.ones(bs, 1, device=device)
             fake_labels = torch.zeros(bs, 1, device=device)
 
-            # --- Treina o Discriminador ---
-            # Ele quer dar nota alta para o real e nota baixa para o falso.
+          
             opt_d.zero_grad()
 
             pred_real = discriminator(real_imgs)
@@ -123,15 +122,14 @@ def train(epochs, batch_size, lr, sample_every):
             loss_fake = criterion(pred_fake, fake_labels)
 
             loss_d = loss_real + loss_fake
-            loss_d.backward()
-            opt_d.step()
+            loss_d.backward() #backpropagation
+            opt_d.step()# ajuste de peso
 
-            # --- Treina o Gerador ---
-            # Ele quer que o Discriminador confunda suas imagens com reais.
+          
             opt_g.zero_grad()
             pred = discriminator(fake_imgs)
             loss_g = criterion(pred, real_labels)
-            loss_g.backward()
+            loss_g.backward()#backpropagation
             opt_g.step()
 
         g_losses.append(loss_g.item())

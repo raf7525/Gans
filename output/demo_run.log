@@ -1,0 +1,14 @@
+Usando dispositivo: cpu
+Epoca 001/5 | loss_D: 1.3803 | loss_G: 1.1548
+  -> amostras salvas em /home/raf75/projetos_pessoais/Gans/output/samples_epoch_001.png
+Epoca 002/5 | loss_D: 1.5881 | loss_G: 0.6802
+  -> amostras salvas em /home/raf75/projetos_pessoais/Gans/output/samples_epoch_002.png
+Epoca 003/5 | loss_D: 0.6821 | loss_G: 1.7646
+  -> amostras salvas em /home/raf75/projetos_pessoais/Gans/output/samples_epoch_003.png
+Epoca 004/5 | loss_D: 1.2866 | loss_G: 0.8505
+  -> amostras salvas em /home/raf75/projetos_pessoais/Gans/output/samples_epoch_004.png
+Epoca 005/5 | loss_D: 0.6578 | loss_G: 1.8314
+  -> amostras salvas em /home/raf75/projetos_pessoais/Gans/output/samples_epoch_005.png
+  -> curva de loss salva em /home/raf75/projetos_pessoais/Gans/output/loss_curve.png
+
+Concluido. Resultados salvos em: /home/raf75/projetos_pessoais/Gans/output
