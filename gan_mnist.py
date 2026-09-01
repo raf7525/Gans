@@ -1,25 +1,3 @@
-"""
-GAN simples (vanilla GAN, redes densas) treinado no MNIST.
-
-Duas redes competem:
-  - Gerador (G): recebe ruído aleatório e tenta produzir dígitos falsos
-    que pareçam reais.
-  - Discriminador (D): recebe uma imagem (real ou falsa) e tenta dizer
-    se ela é real (veio do MNIST) ou falsa (veio do G).
-
-O treino alterna: D aprende a distinguir melhor, G aprende a enganar D
-melhor. Ao final, G sozinho é capaz de gerar dígitos novos e plausíveis
-a partir de puro ruído.
-
-Uso:
-    python3 gan_mnist.py --epochs 30
-
-Saídas (pasta output/):
-    samples_epoch_XXX.png  -> grade de dígitos gerados a cada época
-    loss_curve.png         -> curva de loss de G e D ao longo do treino
-    generator.pt           -> pesos do gerador treinado
-"""
-
 import argparse
 import os
 
@@ -40,7 +18,7 @@ class Generator(nn.Module):
         super().__init__()
         self.net = nn.Sequential(
             nn.Linear(latent_dim, 256),
-            nn.LeakyReLU(0.2),
+            nn.LeakyReLU(0.2), #Activation Function
             nn.Linear(256, 512),
             nn.LeakyReLU(0.2),
             nn.Linear(512, 1024),
@@ -58,11 +36,11 @@ class Discriminator(nn.Module):
     def __init__(self, img_size=IMG_SIZE):
         super().__init__()
         self.net = nn.Sequential(
-            nn.Linear(img_size, 512),
-            nn.LeakyReLU(0.2),
+            nn.Linear(img_size, 512),#hidden 784-> 512
+            nn.LeakyReLU(0.2),#hidden 512->256
             nn.Linear(512, 256),
             nn.LeakyReLU(0.2),
-            nn.Linear(256, 1),
+            nn.Linear(256, 1),#output 256->1 (real ou falso)
             nn.Sigmoid(),  # probabilidade de ser real
         )
 
@@ -94,8 +72,8 @@ def train(epochs, batch_size, lr, sample_every):
     generator = Generator().to(device)
     discriminator = Discriminator().to(device)
 
-    criterion = nn.BCELoss()#FUNCAO DE PERDA
-    opt_g = torch.optim.Adam(generator.parameters(), lr=lr, betas=(0.5, 0.999))
+    criterion = nn.BCELoss()#FUNCAO DE PERDA loss = -[ y·log(p) + (1-y)·log(1-p) ]
+    opt_g = torch.optim.Adam(generator.parameters(), lr=lr, betas=(0.5, 0.999))#taxa de aprendizado, dessa linha apenas do gerador
     opt_d = torch.optim.Adam(discriminator.parameters(), lr=lr, betas=(0.5, 0.999))
 
     fixed_noise = torch.randn(64, LATENT_DIM, device=device)
@@ -114,16 +92,16 @@ def train(epochs, batch_size, lr, sample_every):
             opt_d.zero_grad()
 
             pred_real = discriminator(real_imgs)
-            loss_real = criterion(pred_real, real_labels)
+            loss_real = criterion(pred_real, real_labels)#quanto o modelo errou das imagens reais. 
 
             noise = torch.randn(bs, LATENT_DIM, device=device)
             fake_imgs = generator(noise)
             pred_fake = discriminator(fake_imgs.detach())
-            loss_fake = criterion(pred_fake, fake_labels)
+            loss_fake = criterion(pred_fake, fake_labels)#quanto errou de imagens falsas.
 
             loss_d = loss_real + loss_fake
             loss_d.backward() #backpropagation
-            opt_d.step()# ajuste de peso
+            opt_d.step()# ajuste de peso gradient descent
 
           
             opt_g.zero_grad()
